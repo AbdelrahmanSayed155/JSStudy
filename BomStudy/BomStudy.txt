@@ -1,0 +1,97 @@
+Bom : Browser Object Model 
+ that is using for Browser Control 
+   -- that doing actions not related to html page 
+   -- can url of browser
+   -- request to change background of browser 
+   -- Alert , Confirm , prompet 
+   -- window move , window open 
+   -- change text of text bar of browser 
+  Bom has no standard every browser has it's bom 
+   All modern browsers have some common Bom objects 
+     --- Window , Screen , Location , History  ,  Navigation , Timming , Cookies 
+Bom definition : is collections of objects to control Browser 	 
+important object in bom is window object 
+
+---------------
+Window object 
+    is suported by every browser  it's methods not suported in all browser 
+     document is memeber into window object 
+   window.print();
+   window.alert(" "); to show message in broswer  not recomended 
+   var bol =  window.confirm(" "); to show message in broswer   return true or false and it have yes and no 
+    var input =  window.prompet(" "); to get element from user    return string that user write  
+
+	TimeOut 
+	 var idTimeOut = window.setTimeout(function , milisecond , param1 , prams) this wait milisecond then run function 
+	so it frist wait specific time then run function 
+    it return number  of time out 
+	you can cleantime out 
+	window.cleanTimeout(idTimeOut) idTimeOut id of time out  
+    --
+	var idofprocess = window.setInterval(function . milisecond , params) this run function every milisecond
+     mean that frist wait specific time then run function and  wait then run and  wait then run to infinity 
+	 can stop it by 
+	 window.clearInterval(idofprocess);
+
+	 -------open 
+	 window.open() this using for open new window new tap 
+     window.open(URL, name, specfication , replace)
+     name -> name of window you can refer to it 
+     specfication -> wight and width of new page ant other properties 
+     replace -> take true or false (replace it in History)
+    
+	----Scroll
+	scrollBy(x,y) 
+	scrollTo(x,y)
+    --- stop close focus 
+	 stop to stop loading 
+        var gg =  window.close(url);
+		gg.close();
+		window.close() if your page are reloading and you want to cancel reloading it 
+		gg.focus()  active it 
+-------- window properties   
+	---- innerHeight
+	    to get visual hieght 
+	
+	---- outerhieght get rel height 
+    ----pageXoffset , pageYoffset
+    --- window.location.href  return url of page 
+	     to set window.location.href = "http://www.google.com"
+		 redirct it to page 
+		 redirect to element id 
+	---- to get host 
+         window.location.host return host 	
+	--- window.location.protocol to get protocol of page(http , https , file , mailto , ftp )
+	--- window.location.search get pathParams in url 
+	--- window.location.pathname get path of page 
+	--- reload , assign , repalce 
+	---window.location.reload(false) for refresh page but from cach 
+	---window.location.reload(true) for refresh page but from server  
+	---window.location.repalce("url") repalce this url with other in history 
+	---window.location.assign(url) assign this url in history 
+--------History Object  
+   --- history.forward() move you to next website 
+   --- backward() move you to previous website 
+   ---history.go(number)  number>0 it mean forward number number < 0 backward n number previosly 
+--------navigator bar property 
+          getappVersion , appName ,  other Properties   
+--------Screen 
+    you can get properties of user scren device width and height 
+	window.screen.height 
+	window.screen.width 
+--------Cookies 	
+	store data in client side it save time
+	window.document.cookie = "name=abdelrahman";
+	window.document.cookie = "name=abdelrahman , expires=Date , path="/"";
+	to delete cookie set expires after now with one second 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

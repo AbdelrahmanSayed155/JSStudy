@@ -1,0 +1,256 @@
+Dom : Document Object Model 
+ HTML is object run in Browser 
+Dom Programing interface For html , xml so it give you html objects you can controll by JavaScipt
+ so i can get html page as dom and i can manulplate so it can change atrribute delete element add element or content 
+  can ovrride event 
+  Html in run Time be Dom 
+  
+-----------------------
+hold html element 
+  document.getElementById() it return one element because id is unique 
+  document.getElementsByTagName() it return alot of elements by tagName so it return array 
+        so to get element you must use element[index] 
+  document.getElementsByClassName() it return alot of elements by ClassName so it return array 
+        so to get element you must use element[index] 
+  document.getElementsByClassName
+  document.getElementsByName
+  document.querySelectorAll(params) params can be class or tag or path of specific tag
+-------------------------------------------
+
+Document obj 
+document.title 
+document.images  images is array 
+document.forms   foms is array 
+documnet.body 
+document.anchors get tag a <a></a>
+document.links  get links  
+document.write(can write any thing here )
+---------------------------------------------
+getting and setting content of elements 
+ /*
+ innertext
+ outerText
+    but they not standard 
+ */
+ innerHTML    
+ outerHTML
+ textContent
+
+element.innerHTML it give you full html content
+element.textContent it give text element contain 
+-------------------------------------------------------
+change attribute setting and getting
+atrribute mean Elements properties as name , id , class  of element 
+ var element = document.getElementById("IDName"); 
+element.id  to set and get
+element.className to set and get 
+element.src
+element.name
+element.alt  for images 
+element.titile for images 
+-other way and this is standard Way 
+element.getAttribute("attributeName"); this passByValue
+var sero =  element.getAttribute("src");
+element.setAttribute("attribute name"," attribute Value "); if this element not found it create that 
+element.hasAttribute("attribute name");
+element.removeAttribute("attribute name");
+--------------------------------------------------
+Element ClassList you can add or remove class for element 
+
+ var element = document.getElementById("IDName"); 
+ var classelemnts = element.classList; classelemnts is array of classes 
+  
+element.classList.add("ClassName");
+element.classList.remove("ClassName");
+element.classList.toggle("ClassName"); if it added it removed if it removed it added 
+-----------------------------------
+element Children  { (<p></p> <font></font> htmlElement) ,(text and spaces and htmlElemnt )}
+Body and head are childerns for HTML 
+so and elemnt contain 
+var element = document.getElementById("IDName"); 
+ element.childElementCount it return number of child 
+  element.childeren it return array of childeren  but every child is element is htmlTag
+  element.childerenNodes it return array if text node and element node 
+  elemnt.fristChild it get frist node  can get last 
+  elemnt.fristElementChild it get frist HTMLChild get last 
+  
+  create elements 
+var element = document.getElementById("IDName"); 
+var newElemnt  = document.createElement("div")  this create div tage
+textnode =  document.createTextNode("text of div  loool "); create text 
+newElemnt.appendChild(textnode); 
+
+element.appendChild(newElemnt);
+  
+
+ to set element in specific location 
+ 
+element.insertBefore(elementwillinserted , ElementNodewillinsertbeforeit );
+ElementNodewillinsertbeforeit cat get it with alot way 
+
+element.removeChild(newElemnt);
+newElemnt.nodeName name of element 
+newElemnt.tagName name of tag of element 
+newElemnt.nodeName name of element 
+newElemnt.nodeName name of element 
+can get node value or 
+
+to clone elemnt to another 
+
+var myDiv =  elemnt.getElementById("div");
+
+var eee =  myDiv.firstElementChild.cloneNode;
+
+
+var newDiv =  elemnt.getElementById("newdiv");
+newDiv.appendChild(newDiv);
+
+to get parent node 
+element.parentNode
+
+get next element 
+                 element.childNode[0].nextElementsibling return next element tag 
+                 element.childNode[0].nextsibling return next  node 
+for forms  for focus active input to write text
+               blur  to deactive writting text
+			   
+			   document.getElementById("name1").focuse;
+			   document.getElementById("name1").blur;
+ can set action 
+ var but = document.getElementById("but1");
+but.onclick = function(){
+
+}; 
+
+
+EventListner 
+
+but1 =  document.getElementById("but");
+
+but2 = document.getElementById("but2");
+	but2.onclick = function (){
+but1.addEventListner('click' , /* can be call to any function */function(){
+ that mean you set action ton but1  but in run time 
+
+});
+	}	
+				
+	can remove Event lisner 
+
+but2.onclick = function (){
+but1.removeEventListner('click' , /* can be call to any function */function(){
+ that mean you set action ton but1  but in run time 
+
+});
+	}	
+				
+	
+var parentElement =  document.getElementById("parentElement");
+var childElement =  document.getElementById("childElement");	
+if(parentElement.contain(childElement))	{
+do any things 
+}
+				
+	element.clientHieght is hightof element but this hieght don't have (scroll , margin , border )	
+	element.clientWidth
+	element.scrollHieght  have (Scroll , margin , border)	
+    element.scrollWidth 	
+	element.offsetHieght is hightof element but this hieght don't have ( margin )	
+	element.offsetWidth			
+				
+
+scrollTop   --- scrollLeft				
+	document.body.scrollTop +=1000;		
+	document.body.scrollLeft +=1000;		
+--------------------------------------
+Style 
+
+var elements=  document.style.property =  value 
+	property {Color , Size }
+	testElement.style.backgroundColor ='red';
+-------------------
+document Object 
+document.inputEncoding   utf-8 or windows44
+document.lastModify     get last change in document 
+document.URL     get  url of current page 
+
+var crEelement =  document.createElement("div")
+document.body.appendChild(crEelement);
+can create text node andd comment 
+
+setAttribute 
+myattr =  document.createAttribute("class");
+myattr.value =  "cds";
+element.setAttribute(myattr);
+----------------
+window.onload = function this function run after every element loaded in html 
+window.onscroll =  function  ; it run when user scroll into page 
+window.onresize =  function ;  it run when resize html page 
+
+button1.onsubmit = function (e){
+e.preventDefault();
+}
+Event for mouse 
+1 - onclick
+2- ondbclick
+3-oncontextmenue for right click  you can prevent right click 
+
+document.body.oncontextmenue = function(e){
+e.preventDefault();
+}
+
+4- onmouseenter that mean mouse houver 
+5- onmouseleave  
+-----------
+keyboard Event 
+1 - onkeydown frist moment in click 
+2 - onkeypress second moment in click
+3 - onkeyup  after click 
+
+
+good perefrence 
+w3school 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+				
+				
+
+
+
+
+
+

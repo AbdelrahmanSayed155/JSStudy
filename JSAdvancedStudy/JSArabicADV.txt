@@ -1,0 +1,405 @@
+Js Object 
+Var person ={
+"name":"Abdelrahaman" ,
+"age": 1200
+}
+function Car(){
+    this.color;
+    this.name;
+    this.logoName;
+}
+var aliCar = new Car(); var samyCar = new Car(); aliCar.color = "red";
+aliCar.logoName ="Hamer"; aliCar.name ="Hamer 2 "; console.log(aliCar.color)
+
+with constructor 
+function Car( var color , var name , var logoName){
+    this.color = color;
+    this.name = name;
+    this.logoName = logoName;
+}
+
+to add new field to object 
+aliCar.age = 15;  this added for this object only
+ or using prototype  Car.prototype.age = 0; or aliCar.__proto__age =0 this added for function that meaning every object 
+ will contain age property 
+
+ to create object 
+ 
+ var pen={
+    "name":"pencile",
+    "cost":10
+}
+var newpen = Object.create(pen);
+newpen.__proto__.tall =150;
+pen.tall =20;
+newpen.tall =70;
+console.log(newpen.tall);
+console.log(pen.tall);
+newpen.name ="AbdoLOLOL"
+console.log(pen.name);
+
+var person ={
+    "name":"Samy",
+    "age":120
+}
+
+var student ={
+    schoolName:"Tahrir"
+}
+
+Object.assign(person,student);
+Object.assign(target,sourse );
+properties of student will moved into person that mean person have properties of student
+override if this property found 
+
+obj1 = Object.freeze(obj2);
+freeze prevent any change in object that you can't change any property in it  obj1 and obj2 are aleardy freezed 
+
+to check isFrozrn(obj) return true or false 
+obj1 = Object.preventextension(obj2);
+it prevent to add any new property  obj1 obj2
+
+obj1 = Object.preventextension({is smpty obj});
+obj1 is frozen obj 
+
+Object.keys(person) return arr with name of property ["name"  , "age"]
+Object.values(person) return arr with values of property ["Samy"  , "120"]
+Object.entries(person) return arr_2D with name and values of property [["name","Samy"],["age",120]]
+--------------inheritance 
+function Building(a){
+    this.area = a
+}
+function School(a,numberofStudent){
+    Building.call(this,a);
+    this.capacity = numberofStudent;
+}
+/*
+it mean school child for Building 
+*/ 
+
+
+
+function Building(a){
+    this.area = a
+    this.foo = function(){
+        console.log("Building Function ");
+    }
+}
+
+function School(a,numberofStudent){
+    Building.call(this,a);
+    this.capacity = numberofStudent;
+}
+
+//School.prototype =  Object.create(Building.prototype);
+
+var d = new School(10,12);
+d.foo();
+
+if you add new properties or function on line you must 
+
+child.prototype = Object.create(parent.prototype);
+
+
+Object define property to add property to obj
+Object.defineProperty(obj ,"nameOfpropety" , "feature of property as value , writable = tru or false , enumerable show it 
+if i want to using Object.key   , configrable if false you can't delete it  and it drfine discriptor can add
+ get(){} and set(va){ }") 
+there is 
+Object.properties(obj ,{})
+
+Object.property(obj ,discriptor)
+discriptor ->  object have feature of property 
+
+to get propertyDiscriptor of field 
+Object.getOwnPropertyDiscriptor(Obj1 , "FieldName")
+
+----Json
+JSON.parse(String) it return json object 
+JSON.stringify(jsonobject) it return string 
+
+to load json file from server  or from externalFile
+var xmr = new XMLHttpRequest();
+xmr.open("Method http type GET or POST" ,"URL or file path");
+
+--- to send request to server 
+xmr.send(); return response body 
+
+xmr.readystate
+readyState it using to describe your state request (Request status ) 
+                                                0  unset     just new XMLHTTP 
+												1  opened    xmr.open 
+												2   recived  xmr.send
+												3   loading   just wait response of server
+												4   done      response recieved 
+xmr.onreadystatechange  this event fire when  readystate changed  as previos state 
+xmr.status :  this is response status 
+xmr.response  : return response body 
+xmr.responseTest return response As response 
+----------------------------------------------------
+Closures
+
+Scope of variables 
+
+var pass = 3;
+var boo = function(){
+
+var fixed = 13;
+return pass+fixed;
+}
+
+boo() this will return   16
+var pass = 5;
+boo() this will return it will return 18
+so global variable is not standard 
+
+So closures used for specify scope of variables 
+
+
+function persin(pass){
+var _pass = pass; you can't reach to this variable from out side this function 
+ so you can create function and return it 
+}
+
+
+
+avaScript variables can belong to the local or global scope.
+
+Global variables can be made local (private) with closures.
+
+Global Variables
+A function can access all variables defined inside the function, like this:
+
+Example
+function myFunction() {
+    var a = 4;
+    return a * a;
+}
+But a function can also access variables defined outside the function, like this:
+
+Example
+var a = 4;
+function myFunction() {
+    return a * a;
+}
+In the last example, a is a global variable.
+
+In a web page, global variables belong to the window object.
+
+Global variables can be used (and changed) by all scripts in the page (and in the window).
+
+In the first example, a is a local variable.
+
+A local variable can only be used inside the function where it is defined. It is hidden from other functions and other scripting code.
+
+Global and local variables with the same name are different variables. Modifying one, does not modify the other.
+
+Variables created without the keyword var, are always global, even if they are created inside a function.
+
+
+Variable Lifetime
+Global variables live as long as your application (your window / your web page) lives.
+
+Local variables have short lives. They are created when the function is invoked, and deleted when the function is finished.
+
+A Counter Dilemma
+Suppose you want to use a variable for counting something, and you want this counter to be available to all functions.
+
+You could use a global variable, and a function to increase the counter:
+
+Example
+// Initiate counter
+var counter = 0;
+
+// Function to increment counter
+function add() {
+    counter += 1;
+}
+
+// Call add() 3 times
+add();
+add();
+add();
+
+// The counter should now be 3
+There is a problem with the solution above: Any code on the page can change the counter, without calling add().
+
+The counter should be local to the add() function, to prevent other code from changing it:
+
+Example
+// Initiate counter
+var counter = 0;
+
+// Function to increment counter
+function add() {
+    var counter = 0; 
+    counter += 1;
+}
+
+// Call add() 3 times
+add();
+add();
+add();
+
+//The counter should now be 3. But it is 0
+It did not work because we display the global counter instead of the local counter.
+
+We can remove the global counter and access the local counter by letting the function return it:
+
+Example
+// Function to increment counter
+function add() {
+    var counter = 0; 
+    counter += 1;
+    return counter;
+}
+
+// Call add() 3 times
+add();
+add();
+add();
+
+//The counter should now be 3. But it is 1.
+It did not work because we reset the local counter every time we call the function.
+
+ A JavaScript inner function can solve this.
+
+JavaScript Nested Functions
+All functions have access to the global scope.  
+
+In fact, in JavaScript, all functions have access to the scope "above" them.
+
+JavaScript supports nested functions. Nested functions have access to the scope "above" them.
+
+In this example, the inner function plus() has access to the counter variable in the parent function:
+
+Example
+function add() {
+    var counter = 0;
+    function plus() {counter += 1;}
+    plus();    
+    return counter; 
+}
+This could have solved the counter dilemma, if we could reach the plus() function from the outside.
+
+We also need to find a way to execute counter = 0 only once.
+
+We need a closure.
+
+JavaScript Closures
+Remember self-invoking functions? What does this function do?
+
+Example
+var add = (function () {
+    var counter = 0;
+    return function () {counter += 1; return counter}
+})();
+
+add();
+add();
+add();
+
+// the counter is now 3
+Example Explained
+The variable add is assigned the return value of a self-invoking function.
+
+The self-invoking function only runs once. It sets the counter to zero (0), and returns a function expression.
+
+This way add becomes a function. The "wonderful" part is that it can access the counter in the parent scope.
+
+This is called a JavaScript closure. It makes it possible for a function to have "private" variables.
+
+The counter is protected by the scope of the anonymous function, and can only be changed using the add function.
+
+A closure is a function having access to the parent scope, even after the parent function has closed.
+-----------------------------------
+Evaluation 
+ to execute js code and it is string 
+1-  eval("allert('go')");
+2- function Constructor 
+
+var d = new function("a","b","consol.log(a+b)");
+d(2,3) this will print 5
+
+3- timer 
+   var timeid = setTimeout("alert('fooo')",2000);  this will execute after 2 seconds 
+Evaluation using for execute string as java code 
+
+-------------
+try{
+  codesLine
+}catch(error){
+
+}finally{
+
+}
+
+to throw excption 
+if(y==0)
+throw 'man'
+-----------------
+Asynchronous 
+
+
+async function goal(){
+ console.log("strart go ");
+   var dd =  await new Promise( resolve =>{
+    console.log("Cooking");
+    setTimeout(()=>{
+    console.log("seman");
+      resolve('finished');
+    } , 2000)
+   } );
+   console.log(" call_Back ");
+}
+async : this mean this function asynchronous 
+await : to lock and wait response of this promise 
+resolve('finished'); mean that response finished 
+console.log(" call_Back "); :  after thread com back from its execution 
+--------------------- 
+To read file 
+ <input type="file" id="fileinput1">
+var fileinput1 = window.document.getElementById("fileinput1");
+fileinput1.onchange = function (){
+    var fristfile =  fileinput1.files[0];
+    var fileRead = new FileReader();
+    fileRead.readAsText(fristfile);
+    fileRead.onload = function (){
+        console.log(" File Loaded ");
+        console.log(fileRead.result);
+    } }
+--------------------
+Blob 
+save file into user Device 
+to save and download files and drag 	
+	
+----------
+worker in java Script 
+that i need others thread to do undependecied  Tasks 
+	var worker = new Worker("fileName");
+		worker.postmessage(); to send message to worker 
+	
+	
+	
+	
+-------------------
+Notification 
+Notification.permission // "granted" allowed  , "denied" not allowed  ,  
+
+if (Notification.permission != "granted"){
+            Notification.requestPermission(); // this will appear menue to user to allow notification or cancel it 
+			if (Notification.permission == "granted"){
+			    var no = new Notification ("Message " ,{
+				body :"",
+				viberate:"true",
+				silent:""
+				});
+			}
+}
+
+
+
+
+
+
+
